@@ -1,35 +1,71 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Realtime Chat Application
+    </mat-card-title>
+    <mat-card-subtitle>
+      Using Angular, Node and Socket.io
+    </mat-card-subtitle>
+  </mat-card-header>
 
-<h2>Realtime Chat Application</h2>
-<hr>
-<div>
-  <label for="username">Username</label>
-  <input type="text" [(ngModel)]="user" id="username" placeholder="Enter username">
-</div>
-<div>
-  <label for="roomInput">Choose room</label>
-  <select name="roomInput" id="roomInput" [(ngModel)]="room">
-    <option value="Lobby">Lobby</option>
-    <option value="Hall">Hall</option>
-    <option value="Deluxe">Deluxe</option>
-  </select>
-</div>
-<div> 
-  <button (click)="join()">Join</button>
-  <button (click)="leave()">Leave</button>
-</div>
+  <div class="container">
+    <mat-form-field>
+      <input 
+        matInput 
+        [(ngModel)]="user"
+        placeholder="Nickname"
+        autocomplete="off">
+    </mat-form-field>
 
-<div class="row">
-  <div style="height:200px; padding:15px;">
-    <div *ngFor="let item of messageArray">
-    <span><strong>{{item.user}} : </strong> {{item.message}}</span>
-    </div>
+    <mat-card-actions> 
+      <button
+        mat-stroked-button
+        color="primary" 
+        (click)="join()">
+        Join
+      </button>
+      <button
+        mat-stroked-button
+        color="warn" 
+        (click)="leave()">
+        Leave
+      </button>
+    </mat-card-actions>
+
+    <mat-list>
+      <mat-list-item *ngFor="let m of messages">
+        <b *ngIf="m.user"> {{ m.user + ' : ' }} </b> {{ m.message }}
+        <mat-divider></mat-divider>
+      </mat-list-item>
+
+      <div>
+        <span><em> {{ feedback }} </em></span>
+      </div>
+    </mat-list>
+
+    <mat-form-field floatLabel="never">
+      <input
+        matInput 
+        #inputMessage
+        maxlength="100"
+        autocomplete="off"
+        (keypress)="typing()"
+        (keyup.enter)="send()"
+        [(ngModel)]="messageText"
+        placeholder="Write a message...">
+      <mat-hint align="end">
+        {{ inputMessage.value.length }}/100
+      </mat-hint>
+    </mat-form-field>
+    <mat-card-actions> 
+      <button 
+        mat-stroked-button
+        color="primary" 
+        (click)="send()">
+        Send
+      </button>
+    </mat-card-actions>
+
   </div>
-</div>
-<div class="row">
-  <div>
-    <input type="text" [(ngModel)]="messageText">            
-  </div>
-  <div>
-    <button (click)="sendMessage()">Send</button>
-  </div>
-</div>
+  
+</mat-card>

@@ -6,13 +6,13 @@ import { Message } from './models/message';
 @Injectable()
 export class ChatService {
 
-  private socket = io('https://ui-358-chat.herokuapp.com/');
+  private socket = io('http://localhost:5000');
 
   joinRoom(data) {
     this.socket.emit('join', data);
   }
 
-  newUserJoined() {
+  onJoin() {
     const observable = new Observable<Message>(observer => {
       this.socket.on('new user joined', data => {
         observer.next(data);
@@ -27,9 +27,9 @@ export class ChatService {
     this.socket.emit('leave', data);
   }
 
-  userLeftRoom() {
+  onLeave() {
     const observable = new Observable<Message>(observer => {
-      this.socket.on('left room', data => {
+      this.socket.on('left chat', data => {
         observer.next(data);
       });
       return () => this.socket.disconnect();
@@ -38,13 +38,28 @@ export class ChatService {
     return observable;
   }
 
-  sendMsg(data) {
+  sendMessage(data) {
     this.socket.emit('message', data);
   }
 
-  newMessageReceived() {
+  onMessage() {
     const observable = new Observable<Message>(observer => {
       this.socket.on('new message', data => {
+        observer.next(data);
+      });
+      return () => this.socket.disconnect();
+    });
+
+    return observable;
+  }
+
+  typingMessage(data) {
+    this.socket.emit('typing', data);
+  }
+
+  onTyping() {
+    const observable = new Observable<Message>(observer => {
+      this.socket.on('typing', data => {
         observer.next(data);
       });
       return () => this.socket.disconnect();

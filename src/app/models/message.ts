@@ -1,7 +1,5 @@
 
 export interface Message {
-  user: string;
+  user?: string;
   message: string;
 }
-
-

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChatService } from './chat.service';
 import { Message } from './models/message';
 
@@ -7,50 +7,67 @@ import { Message } from './models/message';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   user: string;
-  room: string;
+  feedback: string;
   messageText: string;
-  messageArray: Message[] = [];
+  messages: Message[] = [];
 
-  constructor(private chat: ChatService) {
-    this.chat.newUserJoined()
+  constructor(private chat: ChatService) {}
+
+  ngOnInit() {
+    this.chat.onJoin()
       .subscribe(data => {
-        this.messageArray = this.messageArray.concat(data);
+        this.messages = this.messages.concat(data);
       });
 
-    this.chat.userLeftRoom()
+    this.chat.onLeave()
       .subscribe(data => {
-        this.messageArray = this.messageArray.concat(data);
+        this.messages = this.messages.concat(data);
       });
 
-    this.chat.newMessageReceived()
+    this.chat.onMessage()
       .subscribe(data => {
-        this.messageArray = this.messageArray.concat(data);
+        this.feedback = '';
+        this.messages = this.messages.concat(data);
+      });
+
+    this.chat.onTyping()
+      .subscribe(data => {
+        this.feedback = data.message;
       });
   }
 
   join() {
     this.chat.joinRoom({
-      user: this.user,
-      room: this.room
+      user: this.user
     });
   }
 
-  leave(data) {
+  leave() {
     this.chat.leaveRoom({
-      user: this.user,
-      room: this.room
+      user: this.user
     });
   }
 
-  sendMessage(data) {
-    this.chat.sendMsg({
+  typing() {
+    this.chat.typingMessage({
+      user: this.user
+    });
+  }
+
+  send() {
+    if (!this.messageText) {
+      return;
+    }
+
+    this.chat.sendMessage({
       user: this.user,
-      room: this.room,
       message: this.messageText
     });
+
+    this.messageText = null;
   }
 
 }

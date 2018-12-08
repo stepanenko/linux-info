@@ -4,6 +4,11 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ChatService } from './chat.service';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -11,7 +16,12 @@ import { ChatService } from './chat.service';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    MatCardModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatListModule
   ],
   providers: [ ChatService ],
   bootstrap: [ AppComponent ]

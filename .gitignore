@@ -5,6 +5,9 @@
 /tmp
 /out-tsc
 
+# server
+/socket-io-chat-server/node_modules
+
 # dependencies
 /node_modules
 
