@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ChatService } from './chat.service';
 import { Message } from './models/message';
 
@@ -7,67 +8,57 @@ import { Message } from './models/message';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   user: string;
   feedback: string;
   messageText: string;
   messages: Message[] = [];
 
-  constructor(private chat: ChatService) {}
+  constructor(private chatService: ChatService) {}
+
 
   ngOnInit() {
-    this.chat.onJoin()
+    this.connect();
+
+    this.chatService.join();
+
+    this.chatService.onAction('typing')
+    .subscribe(data => {
+      this.feedback = data.message;
+    });
+
+    this.onEvent('leave');
+    this.onEvent('join');
+    this.onEvent('message');
+  }
+
+  ngOnDestroy() {
+    this.chatService.leave(this.user);
+  }
+
+  onEvent(event) {
+    this.chatService.onAction(event)
       .subscribe(data => {
         this.messages = this.messages.concat(data);
-      });
-
-    this.chat.onLeave()
-      .subscribe(data => {
-        this.messages = this.messages.concat(data);
-      });
-
-    this.chat.onMessage()
-      .subscribe(data => {
         this.feedback = '';
-        this.messages = this.messages.concat(data);
-      });
-
-    this.chat.onTyping()
-      .subscribe(data => {
-        this.feedback = data.message;
       });
   }
 
-  join() {
-    this.chat.joinRoom({
-      user: this.user
-    });
-  }
-
-  leave() {
-    this.chat.leaveRoom({
-      user: this.user
-    });
+  connect() {
+    this.chatService.initSocket();
   }
 
   typing() {
-    this.chat.typingMessage({
-      user: this.user
-    });
+    this.chatService.typing(this.user);
   }
 
   send() {
-    if (!this.messageText) {
-      return;
+    if (this.messageText) {
+      this.chatService.send(this.user, this.messageText);
+
+      this.messageText = null;
     }
-
-    this.chat.sendMessage({
-      user: this.user,
-      message: this.messageText
-    });
-
-    this.messageText = null;
   }
 
 }

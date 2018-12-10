@@ -1,71 +1,33 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>
-      Realtime Chat Application
-    </mat-card-title>
-    <mat-card-subtitle>
-      Using Angular, Node and Socket.io
-    </mat-card-subtitle>
-  </mat-card-header>
 
-  <div class="container">
-    <mat-form-field>
-      <input 
-        matInput 
-        [(ngModel)]="user"
-        placeholder="Nickname"
-        autocomplete="off">
-    </mat-form-field>
-
-    <mat-card-actions> 
-      <button
-        mat-stroked-button
-        color="primary" 
-        (click)="join()">
-        Join
-      </button>
-      <button
-        mat-stroked-button
-        color="warn" 
-        (click)="leave()">
-        Leave
-      </button>
-    </mat-card-actions>
-
-    <mat-list>
-      <mat-list-item *ngFor="let m of messages">
-        <b *ngIf="m.user"> {{ m.user + ' : ' }} </b> {{ m.message }}
-        <mat-divider></mat-divider>
-      </mat-list-item>
-
-      <div>
-        <span><em> {{ feedback }} </em></span>
-      </div>
-    </mat-list>
-
-    <mat-form-field floatLabel="never">
-      <input
-        matInput 
-        #inputMessage
-        maxlength="100"
-        autocomplete="off"
-        (keypress)="typing()"
-        (keyup.enter)="send()"
-        [(ngModel)]="messageText"
-        placeholder="Write a message...">
-      <mat-hint align="end">
-        {{ inputMessage.value.length }}/100
-      </mat-hint>
-    </mat-form-field>
-    <mat-card-actions> 
-      <button 
-        mat-stroked-button
-        color="primary" 
-        (click)="send()">
-        Send
-      </button>
-    </mat-card-actions>
-
+<div class="chat-container">
+  <div class="chat-window" #chat
+    [scrollTop]="messages.length == 0 ? 0 : chat.scrollHeight">
+    <div class="output">
+      <p *ngFor="let msg of messages">
+        <span *ngIf="msg.user">
+          <span id="name">{{ msg.user }}</span> : {{ msg.message }}
+        </span>
+        <span *ngIf="msg.status" id="status">{{ msg.status }}</span>
+      </p>
+    </div>
   </div>
-  
-</mat-card>
+
+  <input
+    [(ngModel)]="user"
+    maxlength="30"
+    placeholder="Nickname">
+
+  <input class="text-input"
+    maxlength="120"
+    placeholder="Write a message..."
+    (keypress)="typing()"
+    (keyup.enter)="send()" 
+    [(ngModel)]="messageText">
+
+  <button (click)="send()">Send</button>
+
+  <div class="feedback" *ngIf="feedback">
+    <p>{{ feedback }}</p>
+  </div>
+
+</div>

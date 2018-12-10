@@ -1,71 +1,44 @@
+
 import { Injectable } from '@angular/core';
-import * as io from 'socket.io-client';
 import { Observable } from 'rxjs';
-import { Message } from './models/message';
+
+import * as io from 'socket.io-client';
+
+
+const SERVER_URL = 'https://chat358.herokuapp.com/';
 
 @Injectable()
 export class ChatService {
 
-  private socket = io('http://localhost:5000');
+  private socket;
 
-  joinRoom(data) {
-    this.socket.emit('join', data);
+  initSocket() {
+    this.socket = io(SERVER_URL);
   }
 
-  onJoin() {
-    const observable = new Observable<Message>(observer => {
-      this.socket.on('new user joined', data => {
-        observer.next(data);
-      });
-      return () => this.socket.disconnect();
+  send(user, message) {
+    this.socket.emit('message', {
+      user: user || 'Anonymous',
+      message: message
     });
-
-    return observable;
   }
 
-  leaveRoom(data) {
-    this.socket.emit('leave', data);
+  join() {
+    this.socket.emit('join');
   }
 
-  onLeave() {
-    const observable = new Observable<Message>(observer => {
-      this.socket.on('left chat', data => {
-        observer.next(data);
-      });
-      return () => this.socket.disconnect();
+  leave(user) {
+    this.socket.emit('leave', user || 'Anonymous');
+  }
+
+  typing(user) {
+    this.socket.emit('typing', user || 'Anonymous');
+  }
+
+  onAction(action) {
+    return new Observable<any>(observer => {
+      this.socket.on(action, data => observer.next(data));
     });
-
-    return observable;
-  }
-
-  sendMessage(data) {
-    this.socket.emit('message', data);
-  }
-
-  onMessage() {
-    const observable = new Observable<Message>(observer => {
-      this.socket.on('new message', data => {
-        observer.next(data);
-      });
-      return () => this.socket.disconnect();
-    });
-
-    return observable;
-  }
-
-  typingMessage(data) {
-    this.socket.emit('typing', data);
-  }
-
-  onTyping() {
-    const observable = new Observable<Message>(observer => {
-      this.socket.on('typing', data => {
-        observer.next(data);
-      });
-      return () => this.socket.disconnect();
-    });
-
-    return observable;
   }
 
 }
