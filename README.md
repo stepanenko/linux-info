@@ -20,3 +20,10 @@ There's not just "one Linux", instead, we have distributions.
 
 A "distro" is made by a company or organization and packages the Linux core with additional programs and tooling.
 For example you have **Debian, Red Hat, and Ubuntu**, probably the most popular.
+
+If you use a Mac you need to know that under the hood macOS is a UNIX Operating System, and it
+shares a lot of the same ideas and software that a GNU/Linux system uses, because GNU/Linux is a free alternative to UNIX.
+
+> UNIX is an umbrella term that groups many operating systems used in big corporations and institutions, starting from the 70's
+
+The macOS terminal gives you access to the same exact commands I'll add into this repository.
