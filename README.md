@@ -27,3 +27,17 @@ shares a lot of the same ideas and software that a GNU/Linux system uses, becaus
 > UNIX is an umbrella term that groups many operating systems used in big corporations and institutions, starting from the 70's
 
 The macOS terminal gives you access to the same exact commands I'll add into this repository.
+
+The vast majority of the time you will run a Linux computer in the cloud via a **VPS (Virtual Private Server)** like DigitalOcean.
+
+A **shell** is a command interpreter that exposes to the user an interface to work with the underlying operating system.
+Shells let you perform things in a more optimized way than a GUI (Graphical User Interface) could ever possibly let you do.
+Command line tools can offer many different configuration options without being too complex to use.
+
+There are many different kind of shells. We will focus on Unix shells, the ones that you will find commonly on Linux and macOS computers.
+A few shells dominating the space: Bash, Csh, Zsh, Fish and many more!
+
+All shells originate from the Bourne Shell, called `sh`. "Bourne" because its creator was Steve Bourne. Bash means Bourne-again shell.
+
+If you use a Mac, try opening your Mac terminal. That by default is running ZSH. (or, pre-Catalina, Bash)
+You can set up your system to run any kind of shell, for example I use the Fish shell.
