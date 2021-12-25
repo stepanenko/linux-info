@@ -1,5 +1,5 @@
 
-# Linux Info Repository
+# Linux and [MacOS](https://github.com/stepanenko/linux-mac-info/blob/master/MacOS.md) Notes
 
 Created: 16.12.2021
 
