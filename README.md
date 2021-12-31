@@ -9,6 +9,8 @@ Learn in 20% of the time the 80% of core commands that you will use the 90% of t
 
 Current reading: **The Linux Commands Handbook** by Flavio Copes
 
+---
+
 Linux powers the vast majority of the servers that compose the Internet. It's the base upon which
 everything is built upon. But not just that. Android is based on (a modified version of) Linux.
 
