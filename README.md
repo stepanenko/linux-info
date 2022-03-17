@@ -1,7 +1,8 @@
 
-# Linux and [MacOS](https://github.com/stepanenko/linux-mac-info/blob/master/MacOS.md) Notes
+# Linux Notes
 
-Created: 16.12.2021
+Created: 16.12.2021  
+Edited: 17.03.2022
 
 All commands short descriptions: https://tldr.sh/
 
