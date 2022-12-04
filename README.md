@@ -2,7 +2,7 @@
 # Linux Notes
 
 Created: 16.12.2021  
-Edited: 17.03.2022
+Edited: 04.12.2022
 
 All commands short descriptions: https://tldr.sh/
 
@@ -30,8 +30,6 @@ If you use a Mac you need to know that under the hood macOS is a UNIX Operating 
 shares a lot of the same ideas and software that a GNU/Linux system uses, because GNU/Linux is a free alternative to UNIX.
 
 > UNIX is an umbrella term that groups many operating systems used in big corporations and institutions, starting from the 70's
-
-The macOS terminal gives you access to the same exact commands I'll add into this repository.
 
 The vast majority of the time you will run a Linux computer in the cloud via a **VPS (Virtual Private Server)** like DigitalOcean.
 
