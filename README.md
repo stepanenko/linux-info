@@ -1,8 +1,5 @@
 # Linux
 
-Created: 16.12.2021  
-Edited: 28.10.2023
-
 All commands short descriptions: https://tldr.sh/
 
 Current reading: **The Linux Commands Handbook** by Flavio Copes
@@ -11,27 +8,27 @@ Try to learn core commands that you will use 90% of the time.
 
 Here are some of the most commonly used and essential Bash commands:
 
-1. pwd (Print Working Directory): Shows your current directory.
+1. `pwd` (Print Working Directory): Shows your current directory.
 
-2. ls (List): Lists the files and directories in the current directory.
+2. `ls` (List): Lists the files and directories in the current directory.
 
-3. cd (Change Directory): Allows you to change to a different directory.
+3. `cd` (Change Directory): Allows you to change to a different directory.
 
-4. touch (Create Empty File): Creates an empty file.
+4. `touch` (Create Empty File): Creates an empty file.
 
-5. mkdir (Make Directory): Creates a new directory.
+5. `mkdir` (Make Directory): Creates a new directory.
 
-6. rm (Remove): Deletes files and directories. Use with caution.
+6. `rm` (Remove): Deletes files and directories. Use with caution.
 
-7. cp (Copy): Copies files and directories.
+7. `cp` (Copy): Copies files and directories.
 
-8. mv (Move): Moves or renames files and directories.
+8. `mv` (Move): Moves or renames files and directories.
 
-9. cat (Concatenate): Displays the contents of a file.
+9. `cat` (Concatenate): Displays the contents of a file.
 
-10. more and less: Paginate and view file content one screen at a time.
+10. `more` and `less`: Paginate and view file content one screen at a time.
 
-11. head and tail: Display the beginning or end of a file.
+11. `head` and `tail`: Display the beginning or end of a file.
 
 12. grep (Global Regular Expression Print): Searches for text patterns in files.
 
