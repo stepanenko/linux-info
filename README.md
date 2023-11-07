@@ -9,54 +9,30 @@ Try to learn core commands that you will use 90% of the time.
 Here are some of the most commonly used and essential Bash commands:
 
 1. `pwd` (Print Working Directory): Shows your current directory.
-
 2. `ls` (List): Lists the files and directories in the current directory.
-
 3. `cd` (Change Directory): Allows you to change to a different directory.
-
 4. `touch` (Create Empty File): Creates an empty file.
-
 5. `mkdir` (Make Directory): Creates a new directory.
-
 6. `rm` (Remove): Deletes files and directories. Use with caution.
-
 7. `cp` (Copy): Copies files and directories.
-
 8. `mv` (Move): Moves or renames files and directories.
-
 9. `cat` (Concatenate): Displays the contents of a file.
-
-10. `more` and `less`: Paginate and view file content one screen at a time.
-
-11. `head` and `tail`: Display the beginning or end of a file.
-
-12. grep (Global Regular Expression Print): Searches for text patterns in files.
-
-13. find: Searches for files and directories within a specified location.
-
-14. echo: Prints text or variables to the terminal.
-
-15. ps (Process Status): Lists currently running processes.
-
-16. kill: Terminates processes, usually by their process ID (PID).
-
-17. chmod (Change Mode): Modifies file permissions.
-
-18. chown (Change Owner): Changes the owner of a file or directory.
-
-19. history: Displays a history of previously entered commands.
-
-20. tar (Tape Archive): Used to create and extract tar archives.
-
-21. ssh (Secure Shell): Connects to a remote server securely.
-
-22. scp (Secure Copy): Copies files securely between local and remote systems.
-
-23. wget and curl: Download files from the internet.
-
-24. df (Disk Free): Displays disk space usage.
-
-25. du (Disk Usage): Shows directory sizes.
+10. `more` / `less`: Paginate and view file content one screen at a time.
+11. `head` / `tail`: Display the beginning or end of a file.
+12. `grep` (Global Regular Expression Print): Searches for text patterns in files.
+13. `find` Searches for files and directories within a specified location.
+14. `echo` Prints text or variables to the terminal.
+15. `ps` (Process Status): Lists currently running processes.
+16. `kill` Terminates processes, usually by their process ID (PID).
+17. `chmod` (Change Mode): Modifies file permissions.
+18. `chown` (Change Owner): Changes the owner of a file or directory.
+19. `history` Displays a history of previously entered commands.
+20. `tar` (Tape Archive): Used to create and extract tar archives.
+21. `ssh` (Secure Shell): Connects to a remote server securely.
+22. `scp` (Secure Copy): Copies files securely between local and remote systems.
+23. `wget` / `curl` Download files from the internet.
+24. `df` (Disk Free): Displays disk space usage.
+25. `du` (Disk Usage): Shows directory sizes.
 
 These are just a few of the fundamental Bash commands. To learn more about each command and its options,
 you can use the manual pages by running `man` followed by the command name, e.g., `man ls` for information on the `ls` command.
